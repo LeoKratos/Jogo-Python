@@ -1,29 +1,47 @@
 import pygame
+
 pygame.init()
-clock = pygame.time.Clock()
+# variaveis
 menu_inicial = pygame.image.load('imagem\menu.png')
-botao = pygame.image.load('imagem\começar.png')
-x = 0
+botao = pygame.image.load('imagem/começar.png')
+x = 1
 y = 150
 
-#imagens
+# botao
+
+
+# imagens
 janela = pygame.display.set_mode((800, 600))
-janela.blit(menu_inicial, (0,0))
-janela.blit(botao, (0,150))
+janela.blit(menu_inicial, (0, 0))
+#janela.blit(botao, (0, 150))
 pygame.display.flip()
 pygame.display.set_caption('Tri-Quest')
 
+# musica
+pygame.mixer.music.load('musica/musica_menu.mp3')
+pygame.mixer.music.play(-1)
+
+# efeitos sonoros
+click = pygame.mixer.Sound('musica/mouse.wav')
+
 janela_aberta = True
-while janela_aberta :
+while janela_aberta:
     pygame.time.delay(50)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             janela_aberta = False
-        if event.type == pygame.MOUSEBUTTONDOWN:
+
+        elif event.type == pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
-            if botao.get_rect().collidepoint(x, y):
+            if menu_inicial.get_rect().collidepoint(x, y):
                 print('apertou')
 
     pygame.display.update()
 
 pygame.quit()
+
+"""   
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+   emcima do botao             click.play()
+"""
