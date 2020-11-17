@@ -1,14 +1,19 @@
 import pygame
 
 pygame.init()
-seleçao = pygame.image.load('imagem\selecao.png')
+selecao = pygame.image.load('imagem\selecao.png')
 x = 1
 y = 150
 
+
 janela = pygame.display.set_mode((800, 600))
-janela.blit(seleçao, (0, 0))
+janela.blit(selecao, (0, 0))
 pygame.display.flip()
 pygame.display.set_caption('Tri-Quest')
+
+#musica
+pygame.mixer.music.load('musica/tema.mp3')
+pygame.mixer.music.play(-1)
 
 janela_aberta = True
 while janela_aberta:
@@ -19,5 +24,5 @@ while janela_aberta:
 
         elif event.type == pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
-            if seleçao.get_rect().collidepoint(x, y):
+            if selecao.get_rect().collidepoint(x, y):
                 print('apertou')
